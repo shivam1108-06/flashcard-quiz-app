@@ -72,7 +72,7 @@
             Create New Flashcard Deck
         </h3>
 
-        <form>
+        <form method="POST">
 
             <div class="mb-3">
 
@@ -82,8 +82,10 @@
 
                 <input
                     type="text"
+                    name="deck_name"
                     class="form-control"
-                    placeholder="Enter deck name">
+                    placeholder="Enter deck name"
+                    required>
 
             </div>
 
@@ -95,8 +97,10 @@
 
                 <input
                     type="text"
+                    name="category"
                     class="form-control"
-                    placeholder="Enter category">
+                    placeholder="Enter category"
+                    required>
 
             </div>
 
@@ -108,6 +112,39 @@
             </button>
 
         </form>
+
+        {% if decks %}
+
+<div class="card mt-4 p-4">
+
+    <h3 class="mb-3">
+        📚 Flashcard Decks
+    </h3>
+
+    <ul class="list-group">
+
+        {% for deck in decks %}
+
+        <li class="list-group-item">
+
+            <b>
+                {{ deck.deck_name }}
+            </b>
+
+            <br>
+
+            Category:
+            {{ deck.category }}
+
+        </li>
+
+        {% endfor %}
+
+    </ul>
+
+</div>
+
+{% endif %}
 
     </div>
 
