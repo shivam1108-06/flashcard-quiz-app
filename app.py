@@ -62,5 +62,17 @@ def edit_flashcard(index):
         card=flashcards[index]
     )
 
+@app.route("/quiz")
+def quiz():
+
+    if len(flashcards) == 0:
+
+        return "No flashcards available!"
+
+    return render_template(
+        "quiz.html",
+        card=flashcards[0]
+    )
+
 if __name__ == "__main__":
     app.run(debug=True)
