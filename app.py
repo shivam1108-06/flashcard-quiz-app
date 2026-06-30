@@ -4,6 +4,7 @@ app = Flask(__name__)
 
 decks = []
 flashcards = []
+score = 0
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -77,11 +78,21 @@ def quiz(index):
         "quiz.html",
         card=flashcards[index],
         index=index,
-        total=len(flashcards)
-    )
+        total=len(flashcards),
+        score=score
+)
 
 @app.route("/quiz")
 def start_quiz():
+
+    return redirect("/quiz/0")
+
+@app.route("/correct")
+def correct():
+
+    global score
+
+    score += 1
 
     return redirect("/quiz/0")
 
