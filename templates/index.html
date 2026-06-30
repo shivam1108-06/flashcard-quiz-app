@@ -225,45 +225,61 @@
 
         <!-- Flashcards -->
 
-        {% if flashcards %}
+     {% if flashcards %}
 
-        <div class="card mt-4 p-4">
+<div class="card mt-4 p-4">
 
-            <h3 class="mb-3">
+    <h3 class="mb-3">
 
-                📖 Flashcards
+        📖 Flashcards
 
-            </h3>
+    </h3>
 
-            <ul class="list-group">
+    <div class="row">
 
-                {% for card in flashcards %}
+        {% for card in flashcards %}
 
-                <li class="list-group-item">
+        <div class="col-md-6 mb-3">
 
-                    <b>
-                        Question:
-                    </b>
+            <div class="card p-3 shadow">
 
+                <h5>
+                    ❓ Question
+                </h5>
+
+                <p>
                     {{ card.question }}
+                </p>
 
-                    <br>
+                <hr>
 
-                    <b>
-                        Answer:
-                    </b>
+                <h5>
+                    ✅ Answer
+                </h5>
 
+                <p>
                     {{ card.answer }}
+                </p>
 
-                </li>
+                <a
+                    href="/delete/{{ loop.index0 }}"
+                    class="btn btn-danger">
 
-                {% endfor %}
+                    Delete
 
-            </ul>
+                </a>
+
+            </div>
 
         </div>
 
-        {% endif %}
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endif %}
 
     </div>
 

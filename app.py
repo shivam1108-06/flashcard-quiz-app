@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
@@ -35,6 +35,17 @@ def home():
         decks=decks,
         flashcards=flashcards
     )
+
+
+@app.route("/delete/<int:index>")
+def delete_flashcard(index):
+
+    if index < len(flashcards):
+
+        flashcards.pop(index)
+
+    return redirect("/")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
