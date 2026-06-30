@@ -38,262 +38,278 @@
             transform:translateY(-5px);
         }
 
+        .flashcard{
+            border-left:5px solid #0d6efd;
+        }
+
     </style>
 
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
-
-        <div class="container">
-
-            <a class="navbar-brand fw-bold"
-               href="/">
-
-                📚 Flashcard Quiz App
-
-            </a>
-
-        </div>
-
-    </nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
 
     <div class="container">
 
-        <div class="hero">
+        <a class="navbar-brand fw-bold"
+           href="/">
 
-            <h1>
-                📚 Flashcard Quiz App
-            </h1>
+            📚 Flashcard Quiz App
 
-            <p>
-                Create flashcards and improve your learning
-            </p>
+        </a>
 
-        </div>
+    </div>
 
-        <!-- Create Deck -->
+</nav>
 
-        <div class="card p-4">
+<div class="container">
 
-            <h3 class="mb-4">
+    <div class="hero">
 
-                Create New Flashcard Deck
+        <h1>
+            📚 Flashcard Quiz App
+        </h1>
 
-            </h3>
+        <p>
+            Create flashcards and improve your learning
+        </p>
 
-            <form method="POST">
+    </div>
 
-                <div class="mb-3">
+    <!-- Create Deck -->
 
-                    <label class="form-label">
+    <div class="card p-4">
 
-                        Deck Name
+        <h3 class="mb-4">
 
-                    </label>
+            Create New Flashcard Deck
 
-                    <input
-                        type="text"
-                        name="deck_name"
-                        class="form-control"
-                        placeholder="Enter deck name"
-                        required>
+        </h3>
 
-                </div>
+        <form method="POST">
 
-                <div class="mb-3">
+            <div class="mb-3">
 
-                    <label class="form-label">
+                <label class="form-label">
 
-                        Category
+                    Deck Name
 
-                    </label>
+                </label>
 
-                    <input
-                        type="text"
-                        name="category"
-                        class="form-control"
-                        placeholder="Enter category"
-                        required>
-
-                </div>
-
-                <button
-                    class="btn btn-primary w-100">
-
-                    Create Deck
-
-                </button>
-
-            </form>
-
-        </div>
-
-        <!-- Deck List -->
-
-        {% if decks %}
-
-        <div class="card mt-4 p-4">
-
-            <h3 class="mb-3">
-
-                📚 Flashcard Decks
-
-            </h3>
-
-            <ul class="list-group">
-
-                {% for deck in decks %}
-
-                <li class="list-group-item">
-
-                    <b>
-                        {{ deck.deck_name }}
-                    </b>
-
-                    <br>
-
-                    Category:
-                    {{ deck.category }}
-
-                </li>
-
-                {% endfor %}
-
-            </ul>
-
-        </div>
-
-        {% endif %}
-
-        <!-- Add Flashcard -->
-
-        <div class="card mt-4 p-4">
-
-            <h3 class="mb-3">
-
-                ➕ Add Flashcard
-
-            </h3>
-
-            <form method="POST">
-
-                <div class="mb-3">
-
-                    <label class="form-label">
-
-                        Question
-
-                    </label>
-
-                    <input
-                        type="text"
-                        name="question"
-                        class="form-control"
-                        placeholder="Enter question"
-                        required>
-
-                </div>
-
-                <div class="mb-3">
-
-                    <label class="form-label">
-
-                        Answer
-
-                    </label>
-
-                    <input
-                        type="text"
-                        name="answer"
-                        class="form-control"
-                        placeholder="Enter answer"
-                        required>
-
-                </div>
-
-                <button
-                    class="btn btn-success w-100">
-
-                    Add Flashcard
-
-                </button>
-
-            </form>
-
-        </div>
-
-        <!-- Flashcards -->
-
-     {% if flashcards %}
-
-<div class="card mt-4 p-4">
-
-    <h3 class="mb-3">
-
-        📖 Flashcards
-
-    </h3>
-
-    <div class="row">
-
-        {% for card in flashcards %}
-
-        <div class="col-md-6 mb-3">
-
-            <div class="card p-3 shadow">
-
-                <h5>
-                    ❓ Question
-                </h5>
-
-                <p>
-                    {{ card.question }}
-                </p>
-
-                <hr>
-
-                <h5>
-                    ✅ Answer
-                </h5>
-
-                <p>
-                    {{ card.answer }}
-                </p>
-
-                <a
-                    href="/delete/{{ loop.index0 }}"
-                    class="btn btn-danger">
-
-                    Delete
-
-                </a>
+                <input
+                    type="text"
+                    name="deck_name"
+                    class="form-control"
+                    placeholder="Enter deck name"
+                    required>
 
             </div>
 
-        </div>
+            <div class="mb-3">
 
-        {% endfor %}
+                <label class="form-label">
+
+                    Category
+
+                </label>
+
+                <input
+                    type="text"
+                    name="category"
+                    class="form-control"
+                    placeholder="Enter category"
+                    required>
+
+            </div>
+
+            <button
+                class="btn btn-primary w-100">
+
+                Create Deck
+
+            </button>
+
+        </form>
 
     </div>
+
+    <!-- Deck List -->
+
+    {% if decks %}
+
+    <div class="card mt-4 p-4">
+
+        <h3 class="mb-3">
+
+            📚 Flashcard Decks
+
+        </h3>
+
+        <ul class="list-group">
+
+            {% for deck in decks %}
+
+            <li class="list-group-item">
+
+                <b>
+                    {{ deck.deck_name }}
+                </b>
+
+                <br>
+
+                Category:
+                {{ deck.category }}
+
+            </li>
+
+            {% endfor %}
+
+        </ul>
+
+    </div>
+
+    {% endif %}
+
+    <!-- Add Flashcard -->
+
+    <div class="card mt-4 p-4">
+
+        <h3 class="mb-3">
+
+            ➕ Add Flashcard
+
+        </h3>
+
+        <form method="POST">
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    Question
+
+                </label>
+
+                <input
+                    type="text"
+                    name="question"
+                    class="form-control"
+                    placeholder="Enter question"
+                    required>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    Answer
+
+                </label>
+
+                <input
+                    type="text"
+                    name="answer"
+                    class="form-control"
+                    placeholder="Enter answer"
+                    required>
+
+            </div>
+
+            <button
+                class="btn btn-success w-100">
+
+                Add Flashcard
+
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- Flashcards -->
+
+    {% if flashcards %}
+
+    <div class="card mt-4 p-4">
+
+        <h3 class="mb-4">
+
+            📖 Flashcards
+
+        </h3>
+
+        <div class="row">
+
+            {% for card in flashcards %}
+
+            <div class="col-md-6 mb-3">
+
+                <div class="card flashcard p-3">
+
+                    <h5>
+                        ❓ Question
+                    </h5>
+
+                    <p>
+                        {{ card.question }}
+                    </p>
+
+                    <hr>
+
+                    <h5>
+                        ✅ Answer
+                    </h5>
+
+                    <p>
+                        {{ card.answer }}
+                    </p>
+
+                    <div class="d-flex gap-2">
+
+                        <a
+                            href="/edit/{{ loop.index0 }}"
+                            class="btn btn-warning">
+
+                            Edit
+
+                        </a>
+
+                        <a
+                            href="/delete/{{ loop.index0 }}"
+                            class="btn btn-danger">
+
+                            Delete
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    {% endif %}
 
 </div>
 
-{% endif %}
+<footer class="text-center mt-5 mb-3 text-muted">
 
-    </div>
+    <hr>
 
-    <footer class="text-center mt-5 mb-3 text-muted">
+    <p>
 
-        <hr>
+        Created By Shivam Kotak 🚀
 
-        <p>
+    </p>
 
-            Created By Shivam Kotak 🚀
-
-        </p>
-
-    </footer>
+</footer>
 
 </body>
 </html>

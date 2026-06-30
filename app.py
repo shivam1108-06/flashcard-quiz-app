@@ -46,6 +46,21 @@ def delete_flashcard(index):
 
     return redirect("/")
 
+@app.route("/edit/<int:index>", methods=["GET", "POST"])
+def edit_flashcard(index):
+
+    if request.method == "POST":
+
+        flashcards[index]["question"] = request.form["question"]
+
+        flashcards[index]["answer"] = request.form["answer"]
+
+        return redirect("/")
+
+    return render_template(
+        "edit.html",
+        card=flashcards[index]
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)
